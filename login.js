@@ -8,7 +8,7 @@ form.addEventListener('submit', (e) => {
         'password': form.password.value
     }
 
-    fetch('http://127.0.0.1:8000/api/users/token/', {
+    fetch('https://web-production-8e0fa.up.railway.app/api/users/token/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -20,7 +20,7 @@ form.addEventListener('submit', (e) => {
             console.log('DATA:', data.access)
             if (data.access) {
                 localStorage.setItem('token', data.access)
-                window.location = 'file:///C:/Users/antan/Desktop/frontend/projects-list.html'
+                window.location = './projects-list.html'
             } else {
                 alert('Username OR password did not work')
             }

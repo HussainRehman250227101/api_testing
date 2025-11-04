@@ -12,12 +12,12 @@ if (token) {
 logoutBtn.addEventListener('click', (e) => {
     e.preventDefault()
     localStorage.removeItem('token')
-    window.location = 'file:///C:/Users/antan/Desktop/frontend/login.html'
+    window.location = './login.html'
 })
 
 
 
-let projectsUrl = 'http://127.0.0.1:8000/api/projects/'
+let projectsUrl = 'https://web-production-8e0fa.up.railway.app/api/projects/'
 
 let getProjects = () => {
 
@@ -38,7 +38,7 @@ let buildProjects = (projects) => {
 
         let projectCard = `
                 <div class="project--card">
-                    <img src="http://127.0.0.1:8000${project.image}" />
+                    <img src="https://web-production-8e0fa.up.railway.app${project.image}" />
                     
                     <div>
                         <div class="card--header">
@@ -71,7 +71,7 @@ let addVoteEvents = () => {
             let vote = e.target.dataset.vote
             let project = e.target.dataset.project
 
-            fetch(`http://127.0.0.1:8000/api/projects/${project}/vote/`, {
+            fetch(`https://web-production-8e0fa.up.railway.app/api/projects/${project}/vote/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
