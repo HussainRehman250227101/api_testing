@@ -158,7 +158,9 @@ body > section:first-of-type a:hover::after{ opacity:1; transform: translateY(-1
   box-shadow: var(--shadow);
   backdrop-filter: blur(4px);
 }
-
+#special{
+  margin: var(--space-8) auto var(--space-10);
+}
 .project--card{
   display: grid;
   grid-template-columns: 180px 1fr;
@@ -241,7 +243,6 @@ body > section:first-of-type a:hover::after{ opacity:1; transform: translateY(-1
   text-align: center;
   padding: 12px 16px;
   border-radius: 12px;
-  font-weight: 600;
   color: #0d1326;
   background: linear-gradient(180deg, #7eb6ff 0%, #6aa5ff 100%);
   box-shadow: 0 10px 20px rgba(80,140,255,0.35);
