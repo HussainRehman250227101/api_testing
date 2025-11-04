@@ -264,6 +264,13 @@ body > section:first-of-type a:hover::after{ opacity:1; transform: translateY(-1
   filter: brightness(0.98);
 }
 
+#login-form input[type="submit"],
+#login-form a {
+  width: 100%;
+  margin-top: 8px; /* space between controls */
+  display: inline-block; /* ensures <a> behaves like a button */
+}
+
 /* =====================
    Utilities
    ===================== */
