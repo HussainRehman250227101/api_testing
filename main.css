@@ -1,4 +1,4 @@
-body{
+/* body{
     background-color: #f8fafb;
     margin: 0;
 }
@@ -54,4 +54,219 @@ img{
     background-color: #fff;
     border-radius: 5px;
     padding:2em;
+} */
+
+
+/*
+  Beautified stylesheet for the existing HTML/JS structure
+  — No changes required to HTML or JS
+  — Modern, accessible UI with soft shadows, smooth hover states
+  — Responsive layout for cards & form
+*/
+
+/* =====================
+   Design Tokens
+   ===================== */
+:root{
+  --bg: #0b1020;
+  --bg-soft: #11162a;
+  --card: #0f1730;
+  --card-2: #121a38;
+  --text: #e6ecf5;
+  --text-dim: #a6b0c3;
+  --accent: #6aa5ff;
+  --accent-2: #7bffce;
+  --border: rgba(255,255,255,0.08);
+  --shadow: 0 10px 25px rgba(0,0,0,0.35);
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 10px;
+  --space-1: 4px;  
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --speed-fast: 120ms;
+  --speed: 220ms;
+}
+
+/* =====================
+   CSS Reset (minimal)
+   ===================== */
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  background: radial-gradient(1200px 800px at 10% 0%, #0e1630 0%, var(--bg) 60%),
+              radial-gradient(1200px 900px at 120% 10%, #0a2747 0%, #0b1020 55%);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img{ width:100%; display:block; }
+
+/* =====================
+   Generic Elements
+   ===================== */
+section{ width:100%; }
+a{ color: var(--accent); text-decoration: none; transition: color var(--speed-fast) ease; }
+a:hover{ color: #9bc0ff; }
+h1,h2,h3{ margin:0 0 var(--space-3); line-height:1.2; }
+h1{ font-size: clamp(24px, 2.4vw, 32px); }
+h3{ font-size: clamp(18px, 1.6vw, 22px); }
+hr{ border: none; height:1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: var(--space-4) 0; }
+
+/* =====================
+   Top Action Bar (Login/Logout links)
+   ===================== */
+body > section:first-of-type{
+  display:flex; gap: var(--space-3);
+  justify-content: flex-end; align-items:center;
+  max-width: 1100px; margin: 0 auto; padding: var(--space-4);
+}
+body > section:first-of-type a{
+  display:inline-flex; align-items:center; gap:8px;
+  padding: 10px 14px; border:1px solid var(--border);
+  background: linear-gradient(180deg, var(--card) 0%, var(--card-2) 100%);
+  color: var(--text);
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  position: relative; isolation: isolate;
+}
+body > section:first-of-type a::after{
+  content: ""; position:absolute; inset:0; border-radius: 999px;
+  background: radial-gradient(200px 100px at 20% 0%, rgba(122,165,255,0.22), transparent 60%);
+  opacity:0; transition: opacity var(--speed) ease, transform var(--speed) ease;
+}
+body > section:first-of-type a:hover::after{ opacity:1; transform: translateY(-1px); }
+
+/* =====================
+   Projects Wrapper & Cards
+   ===================== */
+#projects--wrapper{
+  width: min(1100px, 92%);
+  margin: var(--space-8) auto var(--space-10);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(4px);
+}
+
+.project--card{
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: var(--space-6);
+  align-items: stretch;
+  background: linear-gradient(180deg, var(--card) 0%, var(--card-2) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  box-shadow: var(--shadow);
+  transition: transform var(--speed) ease, box-shadow var(--speed) ease, border-color var(--speed) ease;
+  position: relative; overflow: hidden;
+  animation: cardIn 360ms cubic-bezier(.2,.65,.25,1);
+}
+.project--card + .project--card{ margin-top: var(--space-6); }
+.project--card:hover{ transform: translateY(-2px); box-shadow: 0 14px 35px rgba(0,0,0,0.45); border-color: rgba(122,165,255,0.25); }
+
+.project--card img{
+  height: 160px; object-fit: cover; border-radius: var(--radius-sm);
+  border:1px solid var(--border);
+}
+
+.card--header{
+  display:flex; align-items:center; gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+.card--header h3{ font-weight: 650; letter-spacing: 0.2px; }
+
+.project--card p{ color: var(--text-dim); margin: var(--space-3) 0 0; }
+.project--card i{ color: #8fb0ff; font-style: normal; font-size: 14px; }
+
+/* Vote buttons styled as icon pills */
+.vote--option{
+  font-size: 22px; line-height: 1; cursor: pointer; user-select: none;
+  color: var(--text-dim); display:inline-flex; align-items:center; justify-content:center;
+  width: 34px; height: 34px; border-radius: 8px; border:1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.00) 100%);
+  transition: transform var(--speed-fast) ease, color var(--speed-fast) ease, border-color var(--speed-fast) ease, background var(--speed-fast) ease;
+}
+.vote--option:hover{ transform: translateY(-1px); color: var(--accent); border-color: rgba(122,165,255,0.35); }
+.vote--option[data-vote="up"]{ box-shadow: inset 0 0 0 1px rgba(122,165,255,0.12); }
+.vote--option[data-vote="down"]{ box-shadow: inset 0 0 0 1px rgba(255,123,123,0.10); }
+
+/* =====================
+   Login Form Card
+   ===================== */
+#form-wrapper{
+  width: min(560px, 94%);
+  margin: var(--space-10) auto;
+  padding: clamp(18px, 3vw, 28px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, var(--card) 0%, var(--card-2) 100%);
+  box-shadow: var(--shadow);
+}
+#form-wrapper h1{ letter-spacing: .3px; }
+
+/* Form elements */
+#login-form{ display:grid; gap: var(--space-4); margin-top: var(--space-4); }
+#login-form label{ color: var(--text-dim); font-size: 14px; }
+#login-form input[type="text"],
+#login-form input[type="password"]{
+  width: 100%; padding: 12px 14px; color: var(--text);
+  background: #0b1330;
+  border: 1px solid var(--border); border-radius: 12px;
+  outline: none; transition: border-color var(--speed-fast) ease, box-shadow var(--speed-fast) ease;
+}
+#login-form input[type="text"]:focus,
+#login-form input[type="password"]:focus{
+  border-color: rgba(122,165,255,0.45);
+  box-shadow: 0 0 0 4px rgba(122,165,255,0.12);
+}
+
+#login-form input[type="submit"]{
+  appearance: none; border: none; cursor: pointer;
+  padding: 12px 16px; border-radius: 12px; font-weight: 600;
+  color: #0d1326; background:
+    linear-gradient(180deg, #7eb6ff 0%, #6aa5ff 100%);
+  box-shadow: 0 10px 20px rgba(80,140,255,0.35);
+  transition: transform var(--speed-fast) ease, filter var(--speed-fast) ease, box-shadow var(--speed-fast) ease;
+}
+#login-form input[type="submit"]:hover{ transform: translateY(-1px); filter: brightness(1.05); box-shadow: 0 12px 26px rgba(80,140,255,0.45); }
+#login-form input[type="submit"]:active{ transform: translateY(0); filter: brightness(0.98); }
+
+/* =====================
+   Utilities
+   ===================== */
+.container{ width:min(1100px, 92%); margin-inline:auto; }
+.muted{ color: var(--text-dim); }
+
+/* =====================
+   Responsive
+   ===================== */
+@media (max-width: 900px){
+  .project--card{ grid-template-columns: 140px 1fr; }
+  .project--card img{ height: 140px; }
+}
+@media (max-width: 700px){
+  #projects--wrapper{ padding: var(--space-4); }
+  .project--card{ grid-template-columns: 1fr; }
+  .project--card img{ height: 200px; }
+  body > section:first-of-type{ justify-content: center; }
+}
+
+/* =====================
+   Animations
+   ===================== */
+@keyframes cardIn{
+  from{ opacity:0; transform: translateY(6px); }
+  to{ opacity:1; transform: translateY(0); }
 }
