@@ -232,16 +232,37 @@ body > section:first-of-type a:hover::after{ opacity:1; transform: translateY(-1
   box-shadow: 0 0 0 4px rgba(122,165,255,0.12);
 }
 
-#login-form input a[type="submit"]{
-  appearance: none; border: none; cursor: pointer;
-  padding: 12px 16px; border-radius: 12px; font-weight: 600;
-  color: #0d1326; background:
-    linear-gradient(180deg, #7eb6ff 0%, #6aa5ff 100%);
+#login-form input[type="submit"],
+#login-form a {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  color: #0d1326;
+  background: linear-gradient(180deg, #7eb6ff 0%, #6aa5ff 100%);
   box-shadow: 0 10px 20px rgba(80,140,255,0.35);
-  transition: transform var(--speed-fast) ease, filter var(--speed-fast) ease, box-shadow var(--speed-fast) ease;
+  text-decoration: none;
+  transition: transform var(--speed-fast) ease,
+              filter var(--speed-fast) ease,
+              box-shadow var(--speed-fast) ease;
 }
-#login-form input[type="submit"]:hover{ transform: translateY(-1px); filter: brightness(1.05); box-shadow: 0 12px 26px rgba(80,140,255,0.45); }
-#login-form input[type="submit"]:active{ transform: translateY(0); filter: brightness(0.98); }
+
+#login-form a:hover,
+#login-form input[type="submit"]:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+  box-shadow: 0 12px 26px rgba(80,140,255,0.45);
+}
+
+#login-form a:active,
+#login-form input[type="submit"]:active {
+  transform: translateY(0);
+  filter: brightness(0.98);
+}
 
 /* =====================
    Utilities
