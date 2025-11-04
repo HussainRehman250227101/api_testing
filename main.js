@@ -38,7 +38,7 @@ let buildProjects = (projects) => {
 
         let projectCard = `
                 <div class="project--card">
-                    <img src="https://web-production-8e0fa.up.railway.app${project.image}" />
+                    <img src="${project.image}" />
                     
                     <div>
                         <div class="card--header">
