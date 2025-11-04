@@ -232,7 +232,7 @@ body > section:first-of-type a:hover::after{ opacity:1; transform: translateY(-1
   box-shadow: 0 0 0 4px rgba(122,165,255,0.12);
 }
 
-#login-form input[type="submit"]{
+#login-form input a[type="submit"]{
   appearance: none; border: none; cursor: pointer;
   padding: 12px 16px; border-radius: 12px; font-weight: 600;
   color: #0d1326; background:
